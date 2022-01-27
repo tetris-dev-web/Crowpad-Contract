@@ -49,6 +49,7 @@ contract CrowpadSaleFactory is Ownable {
     * @param _rate token name
     * @param _wallet token symbol
     * @param _token The number of decimals used in token
+    * @param _tokenOwner The address of tokenOwner
     * @param _cap Initial supply of token
     * @param _openingTime ...
     * @param _closingTime ...
@@ -60,6 +61,7 @@ contract CrowpadSaleFactory is Ownable {
         uint256 _rate,
         address payable _wallet,
         IERC20 _token,
+        address payable _tokenOwner,
         uint256 _cap,
         uint256 _openingTime,
         uint256 _closingTime,
@@ -67,7 +69,7 @@ contract CrowpadSaleFactory is Ownable {
         uint256 _releaseTime
     ) public payable {
         require(msg.value >= deployFee, 'Insufficient funds sent for deploy');
-        CrowpadSale newSale = new CrowpadSale(_rate, _wallet, _token, _cap, _openingTime, _closingTime, _goal, _releaseTime);
+        CrowpadSale newSale = new CrowpadSale(_rate, _wallet, _token, _tokenOwner, _cap, _openingTime, _closingTime, _goal, _releaseTime);
 
         address saleAddress = address(newSale);
         sales.push(Sale(saleAddress, msg.sender, _wallet, address(_token), _rate, _goal, block.timestamp));
