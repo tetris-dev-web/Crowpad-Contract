@@ -48,12 +48,12 @@ contract CrowpadSaleFactory is Ownable {
     * @notice Create new sale
     * @param _rate token name
     * @param _wallet token symbol
-    * @param _token The number of decimals used in token
+    * @param _token token address
     * @param _tokenOwner The address of tokenOwner
-    * @param _cap Initial supply of token
+    * @param _cap hardcap
     * @param _openingTime ...
     * @param _closingTime ...
-    * @param _goal ...
+    * @param _goal softcap
     * @param _releaseTime ...
     * @dev
     */

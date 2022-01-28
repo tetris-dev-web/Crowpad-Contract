@@ -88,7 +88,6 @@ contract CrowpadSale is Crowdsale, CappedCrowdsale, TimedCrowdsale, RefundablePo
     */
     function Deposite(uint256 amount) public {
         require(msg.sender == _tokenOwner, "Only token owner can deposite");
-        require(token().approve(address(this), amount), "CrowpadSale should be approved from token for deposite");
         require(token().balanceOf(_tokenOwner) > amount, "Insufficent balance");
 
         token().transfer(address(this), amount);
